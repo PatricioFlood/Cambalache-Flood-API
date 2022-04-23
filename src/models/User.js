@@ -1,6 +1,14 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } =  require('../services')
 
+const programmingLanguages = [
+  'python',
+  'javascript',
+  'java',
+  'c++',
+  'php',
+]
+
 const User = sequelize.define('users', {
   id: {
     type: DataTypes.INTEGER,
@@ -32,12 +40,5 @@ const User = sequelize.define('users', {
   }
 })
 
-const programmingLanguages = [
-  'python',
-  'javascript',
-  'java',
-  'c++',
-  'php',
-]
 
 module.exports = User

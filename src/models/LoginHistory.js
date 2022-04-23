@@ -1,6 +1,8 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } =  require('../services')
 
+const loginTypes = ['default']
+
 const LoginHistory = sequelize.define('login_histories', {
   id: {
     type: DataTypes.INTEGER,
@@ -20,7 +22,5 @@ const LoginHistory = sequelize.define('login_histories', {
     allowNull: false
   }
 })
-
-const loginTypes = ['default']
 
 module.exports = LoginHistory
