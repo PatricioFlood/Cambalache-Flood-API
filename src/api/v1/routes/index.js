@@ -1,13 +1,12 @@
 const router = require('express').Router()
-const crudRouter = require('./crudRouter')
-const userController = require('../components/user/userController')
-const loginHistoryController = require('../components/loginHistory/loginHistoryController')
-const repositoryController = require('../components/repository/repositoryController')
-const loginController = require('../components/login/loginController')
+const userRoutes = require('../components/user/userRoutes')
+const loginHistoryRoutes = require('../components/loginHistory/loginHistoryRoutes')
+const repositoryRoutes = require('../components/repository/repositoryRoutes')
+const authRoutes = require('../components/auth/authRoutes')
 
-router.use('/login', loginController.login)
-router.use('/users', crudRouter(userController))
-router.use('/loginHistories', crudRouter(loginHistoryController))
-router.use('/repositories', crudRouter(repositoryController))
+router.use(authRoutes)
+router.use('/users', userRoutes)
+router.use('/loginHistories', loginHistoryRoutes)
+router.use('/repositories', repositoryRoutes)
 
 module.exports = router
