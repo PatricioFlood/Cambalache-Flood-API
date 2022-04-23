@@ -1,8 +1,9 @@
 const bcrypt = require('bcrypt')
-const { dbService } = require('../../services')
-const { loginHistoryService, userService } = dbService
+const userService = require('../user/userService')
+const loginHistoryService = require('../loginHistory/loginHistoryService')
 
-const LoginController = {
+const authController = {
+
   login: async (req, res) => {
     const { email, password } = req.body
 
@@ -29,4 +30,4 @@ const LoginController = {
   }
 }
 
-module.exports = LoginController
+module.exports = authController
