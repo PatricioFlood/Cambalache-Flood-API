@@ -1,5 +1,5 @@
 const app = require('./app')
-const config = require('./utils/config')
+const { config } = require('./utils')
 
 const server = app.listen(
   config.PORT,
