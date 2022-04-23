@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize')
-const { config } = require('../utils')
+const { config } = require('../../../utils')
 
 const dialectOptions = {}
 if(config.NODE_ENV === 'production')

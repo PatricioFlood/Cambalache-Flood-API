@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const { sequelize } =  require('../services')
+const { sequelize } =  require('../../services')
 
 const programmingLanguages = [
   'python',
@@ -39,6 +39,5 @@ const User = sequelize.define('users', {
     allowNull: false
   }
 })
-
 
 module.exports = User

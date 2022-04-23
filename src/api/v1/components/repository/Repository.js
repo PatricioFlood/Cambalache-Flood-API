@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize')
-const { sequelize } =  require('../services')
+const { sequelize } =  require('../../services')
 
 const languages = [
   'html',

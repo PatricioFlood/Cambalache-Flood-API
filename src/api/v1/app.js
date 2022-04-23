@@ -1,12 +1,13 @@
 const express = require('express')
 const cors = require('cors')
+const routes = require('./routes')
+require('./models/associations')
 require('express-async-errors')
-require('./services/sequelize')
 
 const app = express()
 
 app.use(express.json())
 app.use(cors())
-app.use('/', (req, res) => res.send('Hello World'))
+app.use('/v1', routes)
 
 module.exports = app

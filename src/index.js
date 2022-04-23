@@ -1,4 +1,4 @@
-const app = require('./app')
+const app = require('./api/v1/app')
 const { config } = require('./utils')
 
 const server = app.listen(

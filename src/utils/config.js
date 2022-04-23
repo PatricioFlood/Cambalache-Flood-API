@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const PORT = process.env.PORT || 3000
-const { 
+const {
   DATABASE_URL
 } = process.env
 
