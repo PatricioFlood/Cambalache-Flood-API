@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const userService = require('../user/userService')
 const loginHistoryService = require('../loginHistory/loginHistoryService')
+const jwtService = require('../../services/jwtService')
 
 const authController = {
 
@@ -25,8 +26,15 @@ const authController = {
       userId: user.id
     })
 
+    user.token  = jwtService.sign({ userId: user.id })
     delete user.password
+
     return res.status(200).send(user)
+  },
+
+  logout: async (req, res) => {
+    await jwtService.revoke(req.token)
+    return res.status(200).json({ message: 'token invalidated' })
   }
 }
 
