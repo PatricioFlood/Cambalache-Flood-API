@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize')
-const { config } = require('../../../utils')
+const { config, logger } = require('../../../utils')
 
 const dialectOptions = {}
 if(config.NODE_ENV === 'production')
@@ -11,11 +11,11 @@ const sequelize = new Sequelize(config.DATABASE_URL, {
 })
 
 sequelize.authenticate()
-  .then(() => console.info('Connection to DB has been established successfully.'))
-  .catch(error => console.info('Unable to connect to the database:', error))
+  .then(() => logger.info('Connection to DB has been established successfully.'))
+  .catch(error => logger.info('Unable to connect to the database:', error))
 
 sequelize.sync()
-  .then( () => console.info('DB synced successfully.'))
-  .catch( error => console.info('Unable to sync database: ', error))
+  .then( () => logger.info('DB synced successfully.'))
+  .catch( error => logger.info('Unable to sync database: ', error))
 
 module.exports = sequelize
