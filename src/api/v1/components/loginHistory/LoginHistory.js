@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } =  require('../../services')
 
-const loginTypes = ['default']
+const loginTypes = ['default', 'other']
 
 const LoginHistory = sequelize.define('login_histories', {
   id: {
