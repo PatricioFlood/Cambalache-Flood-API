@@ -1,2 +1,4 @@
-exports.sequelize = require ('./sequelize')
-exports.dbService = require ('./dbService')
+exports.sequelize = require('./sequelize')
+exports.redis = require('./redis')
+exports.dbService = require('./dbService')
+exports.jwtService = require('./jwtService')
