@@ -8,7 +8,7 @@ module.exports = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#components/schemas/LoginHistory'
+              $ref: '#components/schemas/ShortLoginHistory'
             }
           }
         },
@@ -21,7 +21,7 @@ module.exports = {
             'application/json': {
               schema: {
                 type: 'object',
-                $ref: '#components/schemas/LoginHistory'
+                $ref: '#components/schemas/ShortLoginHistory'
               }
             }
           }
@@ -31,6 +31,9 @@ module.exports = {
         },
         '401': {
           $ref: '#components/responses/Unauthorized'
+        },
+        '500': {
+          $ref: '#components/responses/InternalServerError'
         }
       }
     },
@@ -54,6 +57,9 @@ module.exports = {
         },
         '401': {
           $ref: '#components/responses/Unauthorized'
+        },
+        '500': {
+          $ref: '#components/responses/InternalServerError'
         }
       }
     }
@@ -87,6 +93,9 @@ module.exports = {
         },
         '404': {
           description: 'Error: Not Found'
+        },
+        '500': {
+          $ref: '#components/responses/InternalServerError'
         }
       }
     },
@@ -106,7 +115,7 @@ module.exports = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#components/schemas/LoginHistory'
+              $ref: '#components/schemas/ShortLoginHistory'
             }
           }
         },
@@ -131,6 +140,9 @@ module.exports = {
         },
         '404': {
           description: 'Error: Not Found'
+        },
+        '500': {
+          $ref: '#components/responses/InternalServerError'
         }
       }
     },
@@ -152,6 +164,9 @@ module.exports = {
         },
         '401': {
           $ref: '#components/responses/Unauthorized'
+        },
+        '500': {
+          $ref: '#components/responses/InternalServerError'
         }
       }
     },

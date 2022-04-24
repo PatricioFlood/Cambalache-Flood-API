@@ -32,7 +32,7 @@ module.exports = {
       id: {
         type: 'integer',
         example: 1,
-        readOnly: 'true'
+        readOnly: true
       },
       datetime: {
         type: 'string',
@@ -48,7 +48,8 @@ module.exports = {
       },
       user: {
         type: 'object',
-        $ref: '#components/schemas/ShortUser'
+        $ref: '#components/schemas/ShortUser',
+        readonly: true,
       }
     }
   }

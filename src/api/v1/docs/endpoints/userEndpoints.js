@@ -27,6 +27,9 @@ module.exports = {
         },
         '400': {
           $ref: '#components/responses/BadRequest'
+        },
+        '500': {
+          $ref: '#components/responses/InternalServerError'
         }
       }
     },
@@ -50,6 +53,9 @@ module.exports = {
         },
         '401': {
           $ref: '#components/responses/Unauthorized'
+        },
+        '500': {
+          $ref: '#components/responses/InternalServerError'
         }
       }
     }
@@ -83,6 +89,9 @@ module.exports = {
         },
         '404': {
           description: 'Error: Not Found'
+        },
+        '500': {
+          $ref: '#components/responses/InternalServerError'
         }
       }
     },
@@ -127,6 +136,9 @@ module.exports = {
         },
         '404': {
           description: 'Error: Not Found'
+        },
+        '500': {
+          $ref: '#components/responses/InternalServerError'
         }
       }
     },
@@ -148,6 +160,9 @@ module.exports = {
         },
         '401': {
           $ref: '#components/responses/Unauthorized'
+        },
+        '500': {
+          $ref: '#components/responses/InternalServerError'
         }
       }
     },

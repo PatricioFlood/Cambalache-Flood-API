@@ -48,7 +48,7 @@ const errorHandler = (error, _request, response, _next) => {
     /* falls through */
   default:
     logger.error(error)
-    return response.status(500).json({ error: 'server error' })
+    return response.status(500).json({ error: 'internal server error' })
   }
 }
 

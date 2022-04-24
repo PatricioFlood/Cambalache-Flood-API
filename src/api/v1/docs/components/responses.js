@@ -1,7 +1,7 @@
 module.exports = {
   responses: {
     BadRequest: {
-      description: 'Error: Bad Request',
+      description: 'Bad Request',
       content: {
         'application/json': {
           schema: {
@@ -23,7 +23,7 @@ module.exports = {
       }
     },
     Unauthorized: {
-      description: 'Error: Unauthorized',
+      description: 'Unauthorized',
       content: {
         'application/json': {
           schema: {
@@ -40,6 +40,20 @@ module.exports = {
             'Token Expired': {
               value: { error: 'token expired' }
             }
+          }
+        }
+      }
+    },
+    InternalServerError: {
+      description: 'Internal Server Error',
+      content: {
+        'application/json': {
+          schema: {
+            type: 'object',
+            $ref: '#components/schemas/Error'
+          },
+          example: {
+            error: 'internal server error'
           }
         }
       }
