@@ -9,7 +9,7 @@ const loginHistoryController = {
 
     const newLoginHistory = await loginHistoryService.create(loginHistory)
 
-    return res.json(loginHistoryDTO.single(newLoginHistory))
+    return res.status(201).json(loginHistoryDTO.single(newLoginHistory))
   },
 
   view: async (req, res) => {

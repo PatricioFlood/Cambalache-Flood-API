@@ -9,7 +9,7 @@ const RepositoryController = {
 
     const newRepository = await repositoryService.create(repository)
 
-    return res.json(repositoryDTO.single(newRepository))
+    return res.status(201).json(repositoryDTO.single(newRepository))
   },
 
   view: async (req, res) => {

@@ -7,8 +7,7 @@ const UserController = {
   create: async (req, res) => {
     const user = req.body
     delete user.id
-    user.birthday = new Date(user.birthday)
-
+    user.birthday = user.birthday ? new Date(user.birthday) : null
     if(!user.password)
       return res.status(400).json({ error: 'password is required' })
 
@@ -41,6 +40,7 @@ const UserController = {
     const id = req.params.id
     const updates = req.body
     delete updates.id
+    updates.birthday = updates.birthday ? new Date(updates.birthday) : null
 
     const user = await userService.update(id, updates)
 
