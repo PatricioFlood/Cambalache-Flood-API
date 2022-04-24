@@ -1,13 +1,18 @@
-const dbService = (Model, ModelAssociated) => ({
+const dbService = ({ Model,  associatedModel, associatedAttributes }) => ({
 
   create: async (model) => {
-    const newModel = await Model.create(model, { raw: true })
-    console.log(newModel)
-    return newModel
+    const newModel = await Model.create(model)
+    return JSON.parse(JSON.stringify(newModel))
   },
 
   get: async (id) => {
-    return await Model.findByPk(id, { includes: ModelAssociated, raw: true })
+    const model = await Model.findByPk(id, {
+      include: {
+        model: associatedModel,
+        attributes: associatedAttributes
+      }
+    })
+    return JSON.parse(JSON.stringify(model))
   },
 
   getAll: async () => {
@@ -16,8 +21,12 @@ const dbService = (Model, ModelAssociated) => ({
 
   update: async (id, updates) => {
     const model = await Model.findByPk(id)
-    model.set(updates)
-    return await model.save({ raw: true })
+    if(model){
+      model.set(updates)
+      const savedModel = await model.save()
+      return JSON.parse(JSON.stringify(savedModel))
+    }
+    return null
   },
 
   remove: async (id) => {
@@ -27,7 +36,8 @@ const dbService = (Model, ModelAssociated) => ({
   },
 
   findOne: async (params) => {
-    return await Model.findOne(params)
+    const model = await Model.findOne(params)
+    return JSON.parse(JSON.stringify(model))
   }
 })
 
