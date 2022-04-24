@@ -8,6 +8,11 @@ const authController = {
   login: async (req, res) => {
     const { email, password } = req.body
 
+    if(!password)
+      return res.status(400).json({ error: 'password is required' })
+    if(!email)
+      return res.status(400).json({ error: 'email is required' })
+
     const user = await userService.findOne({ where: { email } })
 
     const passwordCorrect = user === null
