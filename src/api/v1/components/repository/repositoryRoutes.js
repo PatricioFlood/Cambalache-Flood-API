@@ -2,13 +2,11 @@ const router = require('express').Router()
 const repositoryController = require('./repositoryController')
 const middlewares = require('../../middlewares')
 
-router.use(middlewares.authentication)
-
-router.post('/', repositoryController.create)
-router.get('/', repositoryController.viewAll)
-router.get('/:id', repositoryController.view)
-router.put('/:id', repositoryController.update)
-router.delete('/:id', repositoryController.remove)
+router.post('/', middlewares.authentication, repositoryController.create)
+router.get('/', middlewares.authentication, repositoryController.viewAll)
+router.get('/:id', middlewares.authentication, repositoryController.view)
+router.put('/:id', middlewares.authentication, repositoryController.update)
+router.delete('/:id', middlewares.authentication, repositoryController.remove)
 
 
 module.exports = router
