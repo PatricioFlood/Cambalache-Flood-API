@@ -1,4 +1,5 @@
 const repositoryService = require('./repositoryService')
+const repositoryDTO = require('./repositoryDTO')
 
 const RepositoryController = {
 
@@ -8,7 +9,7 @@ const RepositoryController = {
 
     const newRepository = await repositoryService.create(repository)
 
-    return res.json(newRepository)
+    return res.json(repositoryDTO.single(newRepository))
   },
 
   view: async (req, res) => {
@@ -18,14 +19,14 @@ const RepositoryController = {
       const repository = await repositoryService.get(id)
 
       if(repository)
-        return res.json(repository)
+        return res.json(repositoryDTO.single(repository))
 
       return res.status(404).end()
     }
 
     const repositories = await repositoryService.getAll()
 
-    return res.json(repositories)
+    return res.json(repositoryDTO.multiple(repositories))
   },
 
   update: async (req, res) => {
@@ -33,7 +34,7 @@ const RepositoryController = {
 
     const repository = await repositoryService.update(id, req.body)
     if(repository)
-      return res.json(repository)
+      return res.json(repositoryDTO.single(repository))
 
     return res.status(404).end()
   },

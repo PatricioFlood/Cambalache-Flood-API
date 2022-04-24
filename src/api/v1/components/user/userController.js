@@ -1,11 +1,13 @@
 const bcrypt = require('bcrypt')
 const userService = require('./userService')
+const userDTO = require('./userDTO')
 
 const UserController = {
 
   create: async (req, res) => {
     const user = req.body
     delete user.id
+    user.birthday = new Date(user.birthday)
 
     if(!user.password)
       return res.status(400).json({ error: 'password is required' })
@@ -17,9 +19,7 @@ const UserController = {
       password: passwordHash
     })
 
-    delete newUser.password
-
-    return res.status(201).json(newUser)
+    return res.status(201).json(userDTO.single(newUser))
   },
 
   view: async (req, res) => {
@@ -27,19 +27,14 @@ const UserController = {
     if(id){
       const user = await userService.get(id)
       if(user){
-        delete user.password
-        return res.json(user)
+        return res.json(userDTO.single(user))
       }
       return res.status(404).end()
     }
 
     const users = await userService.getAll()
-    const resUsers = users.map(user => {
-      delete user.password
-      return user
-    })
 
-    return res.json(resUsers)
+    return res.json(userDTO.multiple(users))
   },
 
   update: async (req, res) => {
@@ -49,10 +44,8 @@ const UserController = {
 
     const user = await userService.update(id, updates)
 
-    if(user){
-      delete user.password
-      return res.json(user)
-    }
+    if(user)
+      return res.json(userDTO.single(user))
 
     return res.status(404).end()
   },
