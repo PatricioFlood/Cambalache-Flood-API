@@ -21,6 +21,8 @@ const LoginHistory = sequelize.define('login_histories', {
     type: DataTypes.INTEGER,
     allowNull: false
   }
+}, {
+  timestamps: false
 })
 
 module.exports = LoginHistory
