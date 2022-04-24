@@ -1,9 +1,13 @@
 const router = require('express').Router()
-const crudRouter = require('../../routes/crudRouter')
 const loginHistoryController = require('./loginHistoryController')
 const middlewares = require('../../middlewares')
 
 router.use(middlewares.authentication)
-router.use(crudRouter(loginHistoryController))
+
+router.post('/', loginHistoryController.create)
+router.get('/', loginHistoryController.viewAll)
+router.get('/:id', loginHistoryController.view)
+router.put('/:id', loginHistoryController.update)
+router.delete('/:id', loginHistoryController.remove)
 
 module.exports = router

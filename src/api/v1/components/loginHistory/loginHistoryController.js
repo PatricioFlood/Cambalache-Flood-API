@@ -15,15 +15,15 @@ const loginHistoryController = {
   view: async (req, res) => {
     const id = req.params.id
 
-    if(id){
-      const loginHistory = await loginHistoryService.get(id)
+    const loginHistory = await loginHistoryService.get(id)
 
-      if(loginHistory)
-        return res.json(loginHistoryDTO.single(loginHistory))
+    if(loginHistory)
+      return res.json(loginHistoryDTO.single(loginHistory))
 
-      return res.status(404).end()
-    }
+    return res.status(404).end()
+  },
 
+  viewAll: async (_req, res) => {
     const repositories = await loginHistoryService.getAll()
 
     return res.json(loginHistoryDTO.multiple(repositories))
@@ -42,6 +42,7 @@ const loginHistoryController = {
   remove: async (req, res) => {
     const id = req.params.id
     await loginHistoryService.remove(id)
+
     return res.status(204).end()
   }
 

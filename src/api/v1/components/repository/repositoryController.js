@@ -14,16 +14,15 @@ const RepositoryController = {
 
   view: async (req, res) => {
     const id = req.params.id
+    const repository = await repositoryService.get(id)
 
-    if(id){
-      const repository = await repositoryService.get(id)
+    if(repository)
+      return res.json(repositoryDTO.single(repository))
 
-      if(repository)
-        return res.json(repositoryDTO.single(repository))
+    return res.status(404).end()
+  },
 
-      return res.status(404).end()
-    }
-
+  viewAll: async (_req, res) => {
     const repositories = await repositoryService.getAll()
 
     return res.json(repositoryDTO.multiple(repositories))

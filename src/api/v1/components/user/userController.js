@@ -24,14 +24,14 @@ const UserController = {
 
   view: async (req, res) => {
     const id = req.params.id
-    if(id){
-      const user = await userService.get(id)
-      if(user){
-        return res.json(userDTO.single(user))
-      }
-      return res.status(404).end()
+    const user = await userService.get(id)
+    if(user){
+      return res.json(userDTO.single(user))
     }
+    return res.status(404).end()
+  },
 
+  viewAll: async (_req, res) => {
     const users = await userService.getAll()
 
     return res.json(userDTO.multiple(users))
