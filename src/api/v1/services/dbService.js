@@ -7,10 +7,10 @@ const dbService = ({ Model,  associatedModel, associatedAttributes }) => ({
 
   get: async (id) => {
     const model = await Model.findByPk(id, {
-      include: {
+      include: associatedModel ? {
         model: associatedModel,
         attributes: associatedAttributes
-      }
+      } : null
     })
     return JSON.parse(JSON.stringify(model))
   },
