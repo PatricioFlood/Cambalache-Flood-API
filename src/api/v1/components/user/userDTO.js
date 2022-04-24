@@ -1,11 +1,9 @@
-const userDTO = {
-  single: ({ id, name, email, birthday, favoritePLanguage, login_histories, created_at, updated_at }) =>
-    ({ id, name, email, birthday, favoritePLanguage, login_histories, created_at, updated_at }),
+const single = ({ id, name, email, birthday, favoritePLanguage }) =>
+  ({ id, name, email, birthday, favoritePLanguage })
 
-  multiple: (users) => users.map(
-    ({ id, name, email, birthday, favoritePLanguage }) =>
-      ({ id, name, email, birthday, favoritePLanguage })
-  )
+const multiple = (users) => users.map(single)
+
+module.exports = {
+  single,
+  multiple
 }
-
-module.exports = userDTO

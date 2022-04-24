@@ -1,11 +1,9 @@
-const repositoryDTO = {
-  single: ({ id, projectName, language, creationDate, description, created_at, updated_at }) =>
-    ({ id, projectName, language, creationDate, description, created_at, updated_at }),
+const single = ({ id, projectName, language, creationDate, description }) =>
+  ({ id, projectName, language, creationDate, description })
 
-  multiple: (repositories) => repositories.map(
-    ({ id, projectName, language, creationDate, description }) =>
-      ({ id, projectName, language, creationDate, description })
-  )
+const multiple = (repositories) => repositories.map(single)
+
+module.exports = {
+  single,
+  multiple
 }
-
-module.exports = repositoryDTO

@@ -8,7 +8,7 @@ module.exports = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#components/schemas/ShortLoginHistory'
+              $ref: '#components/schemas/LoginHistory'
             }
           }
         },
@@ -21,7 +21,7 @@ module.exports = {
             'application/json': {
               schema: {
                 type: 'object',
-                $ref: '#components/schemas/ShortLoginHistory'
+                $ref: '#components/schemas/LoginHistory'
               }
             }
           }
@@ -40,7 +40,15 @@ module.exports = {
     get: {
       tags: ['LoginHistory'],
       security: [{ 'jsonWebToken': [] }],
-      summary: 'Get all LoginHistories',
+      summary: 'Get all LoginHistories or filter LoginHistories by userId',
+      parameters: [{
+        name: 'userId',
+        description: 'Search by userId',
+        in: 'query',
+        schema: {
+          type: 'string'
+        }
+      }],
       responses: {
         '201': {
           description: 'Created',
@@ -49,7 +57,7 @@ module.exports = {
               schema: {
                 type: 'array',
                 items: {
-                  $ref: '#components/schemas/ShortLoginHistory'
+                  $ref: '#components/schemas/LoginHistory'
                 }
               }
             }
@@ -115,7 +123,7 @@ module.exports = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#components/schemas/ShortLoginHistory'
+              $ref: '#components/schemas/LoginHistory'
             }
           }
         },

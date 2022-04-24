@@ -1,22 +1,9 @@
-const loginHistoryDTO = {
-  single: ({ id, datetime, type, user }) =>
-    ({
-      id,
-      datetime,
-      type,
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        birthday: user.birthday,
-        favoritePLanguage: user.favoritePLanguage
-      }
-    }),
+const single = ({ id, datetime, type, userId }) =>
+  ({ id, datetime, type, userId })
 
-  multiple: (loginHistories) => loginHistories.map(
-    ({ id, datetime, type, userId }) =>
-      ({ id, datetime, type, userId })
-  )
+const multiple = (loginHistories) => loginHistories.map(single)
+
+module.exports = {
+  single,
+  multiple
 }
-
-module.exports = loginHistoryDTO

@@ -1,5 +1,5 @@
 module.exports = {
-  ShortRepository: {
+  Repository: {
     type: 'object',
     properties: {
       id: {
@@ -35,23 +35,4 @@ module.exports = {
     },
     required: ['id', 'projectName', 'language', 'creationDate']
   },
-
-  Repository: {
-    allOf: [{
-      $ref: '#components/schemas/ShortRepository',
-      type: 'object',
-    }],
-    properties: {
-      created_at: {
-        type: 'string',
-        example: '2022-04-24T00:41:13.257Z',
-        readOnly: 'true'
-      },
-      updated_at: {
-        type: 'string',
-        example: '2022-04-24T00:41:13.257Z',
-        readOnly: 'true'
-      }
-    }
-  }
 }

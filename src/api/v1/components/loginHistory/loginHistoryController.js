@@ -23,8 +23,11 @@ const loginHistoryController = {
     return res.status(404).end()
   },
 
-  viewAll: async (_req, res) => {
-    const repositories = await loginHistoryService.getAll()
+  viewAll: async (req, res) => {
+    const { userId } = req.query
+
+    const params = userId ? { where: { userId } } : null
+    const repositories = await loginHistoryService.getAll(params)
 
     return res.json(loginHistoryDTO.multiple(repositories))
   },

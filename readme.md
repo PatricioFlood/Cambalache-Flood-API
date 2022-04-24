@@ -26,6 +26,8 @@ Al iniciar sesión se genera una nueva entrada en la tabla `LoginHistories`
 
 Una vez autenticado puede ver, crear, editar y borrar entradas de cualquiera de las tablas `Users`, `LoginHistories` y `Repositories`.
 
+Se pueden filtrar `LoginHistories` por `userId`
+
 Para revocar un token utilice el endpoint `POST` /logout
 
 ## Requisitos para ejecutar el servidor

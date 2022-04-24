@@ -45,7 +45,7 @@ module.exports = {
               schema: {
                 type: 'array',
                 items: {
-                  $ref: '#components/schemas/ShortUser'
+                  $ref: '#components/schemas/User'
                 }
               }
             }

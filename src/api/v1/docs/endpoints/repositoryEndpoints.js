@@ -49,7 +49,7 @@ module.exports = {
               schema: {
                 type: 'array',
                 items: {
-                  $ref: '#components/schemas/ShortRepository'
+                  $ref: '#components/schemas/Repository'
                 }
               }
             }

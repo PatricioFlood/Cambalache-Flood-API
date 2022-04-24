@@ -1,4 +1,4 @@
-const dbService = ({ Model,  associatedModel, associatedAttributes }) => ({
+const dbService = ({ Model }) => ({
 
   create: async (model) => {
     const newModel = await Model.create(model)
@@ -6,17 +6,12 @@ const dbService = ({ Model,  associatedModel, associatedAttributes }) => ({
   },
 
   get: async (id) => {
-    const model = await Model.findByPk(id, {
-      include: associatedModel ? {
-        model: associatedModel,
-        attributes: associatedAttributes
-      } : null
-    })
+    const model = await Model.findByPk(id)
     return JSON.parse(JSON.stringify(model))
   },
 
-  getAll: async () => {
-    return await Model.findAll({ raw: true })
+  getAll: async (params) => {
+    return await Model.findAll({ ...params, raw: true })
   },
 
   update: async (id, updates) => {
@@ -38,7 +33,8 @@ const dbService = ({ Model,  associatedModel, associatedAttributes }) => ({
   findOne: async (params) => {
     const model = await Model.findOne(params)
     return JSON.parse(JSON.stringify(model))
-  }
+  },
+
 })
 
 module.exports = dbService
