@@ -43,7 +43,7 @@ const errorHandler = (error, _request, response, _next) => {
       return response.status(400).json({ error: 'malformed body' })
     /* falls through */
   case 'Error':
-    if(error.message.includes('data must be a string'))
+    if(error.message.includes('must be a string') || error.message.includes('must be strings'))
       return response.status(400).json({ error: 'malformed body' })
     /* falls through */
   default:
