@@ -41,9 +41,13 @@ const UserController = {
   update: async (req, res) => {
     const id = req.params.id
     const updates = req.body
+
     delete updates.id
     if(updates.birthday)
       updates.birthday = moment(updates.birthday , ['MM-DD-YYYY', 'YYYY-MM-DD'])
+    if(updates.password)
+      updates.password = await bcrypt.hash(updates.password, 10)
+
     const user = await userService.update(id, updates)
 
     if(user)
