@@ -34,8 +34,10 @@ const loginHistoryController = {
 
   update: async (req, res) => {
     const id = req.params.id
+    const updates = req.body
+    delete updates.id
 
-    const loginHistory = await loginHistoryService.update(id, req.body)
+    const loginHistory = await loginHistoryService.update(id, updates)
     if(loginHistory)
       return res.json(loginHistoryDTO.single(loginHistory))
 
