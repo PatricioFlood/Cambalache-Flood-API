@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const moment = require('moment')
 const userService = require('./userService')
 const userDTO = require('./userDTO')
 
@@ -7,7 +8,8 @@ const UserController = {
   create: async (req, res) => {
     const user = req.body
     delete user.id
-    user.birthday = user.birthday ? new Date(user.birthday) : null
+    if(user.birthday)
+      user.birthday = moment(user.birthday , ['MM-DD-YYYY', 'YYYY-MM-DD'])
     if(!user.password)
       return res.status(400).json({ error: 'password is required' })
 
@@ -40,8 +42,8 @@ const UserController = {
     const id = req.params.id
     const updates = req.body
     delete updates.id
-    updates.birthday = updates.birthday ? new Date(updates.birthday) : null
-
+    if(updates.birthday)
+      updates.birthday = moment(updates.birthday , ['MM-DD-YYYY', 'YYYY-MM-DD'])
     const user = await userService.update(id, updates)
 
     if(user)
